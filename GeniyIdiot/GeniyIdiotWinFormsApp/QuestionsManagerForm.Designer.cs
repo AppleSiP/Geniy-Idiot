@@ -75,6 +75,7 @@
             // 
             // questionsManagerDataGridView
             // 
+            questionsManagerDataGridView.AllowUserToAddRows = false;
             questionsManagerDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             questionsManagerDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             questionsManagerDataGridView.Columns.AddRange(new DataGridViewColumn[] { index, Questions });
