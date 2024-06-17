@@ -1,2 +1,2 @@
 # Geniy-Idiot
-Шуточное приложение - викторина / A joke application is a quiz implemented
+Шуточное приложение - викторина, реализовано консольной и оконной версиями, используя файловую систему .json / A comic application - a quiz, implemented in console and window versions, using the .json file system.
