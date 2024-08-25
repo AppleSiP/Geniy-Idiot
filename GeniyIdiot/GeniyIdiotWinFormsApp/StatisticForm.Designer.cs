@@ -30,7 +30,7 @@
         {
             statisticDataGridView = new DataGridView();
             UserNameColumn = new DataGridViewTextBoxColumn();
-            СщгтеКшпреФтыцукыColumn = new DataGridViewTextBoxColumn();
+            CountAnswersColumn = new DataGridViewTextBoxColumn();
             DiagnoseColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)statisticDataGridView).BeginInit();
             SuspendLayout();
@@ -39,7 +39,7 @@
             // 
             statisticDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             statisticDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            statisticDataGridView.Columns.AddRange(new DataGridViewColumn[] { UserNameColumn, СщгтеКшпреФтыцукыColumn, DiagnoseColumn });
+            statisticDataGridView.Columns.AddRange(new DataGridViewColumn[] { UserNameColumn, CountAnswersColumn, DiagnoseColumn });
             statisticDataGridView.Location = new Point(0, 0);
             statisticDataGridView.Name = "statisticDataGridView";
             statisticDataGridView.Size = new Size(483, 361);
@@ -50,10 +50,10 @@
             UserNameColumn.HeaderText = "Имя";
             UserNameColumn.Name = "UserNameColumn";
             // 
-            // СщгтеКшпреФтыцукыColumn
+            // CountAnswersColumn
             // 
-            СщгтеКшпреФтыцукыColumn.HeaderText = "Кол-во правильных ответов";
-            СщгтеКшпреФтыцукыColumn.Name = "СщгтеКшпреФтыцукыColumn";
+            CountAnswersColumn.HeaderText = "Кол-во правильных ответов";
+            CountAnswersColumn.Name = "CountAnswersColumn";
             // 
             // DiagnoseColumn
             // 
@@ -79,7 +79,7 @@
         #endregion
         private DataGridView statisticDataGridView;
         private DataGridViewTextBoxColumn UserNameColumn;
-        private DataGridViewTextBoxColumn СщгтеКшпреФтыцукыColumn;
+        private DataGridViewTextBoxColumn CountAnswersColumn;
         private DataGridViewTextBoxColumn DiagnoseColumn;
     }
 }

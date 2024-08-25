@@ -1,6 +1,5 @@
 using GeniyIdiotConsoleApp;
 using Newtonsoft.Json;
-using System.Windows.Forms;
 
 namespace GeniyIdiotWinFormsApp
 {
@@ -20,12 +19,12 @@ namespace GeniyIdiotWinFormsApp
             var welcomeForm = new WelcomeForm();
             welcomeForm.ShowDialog();
             user = new User(welcomeForm.userNameTextBox.Text);
-            MessageBox.Show("На ответ даётся 10 секунд, нажмите \"OK\" чтобы начать!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            MessageBox.Show("РќР° РѕС‚РІРµС‚ РґР°С‘С‚СЃСЏ 10 СЃРµРєСѓРЅРґ, РЅР°Р¶РјРёС‚Рµ \"OK\" С‡С‚РѕР±С‹ РЅР°С‡Р°С‚СЊ!", "РЎРѕРѕР±С‰РµРЅРёРµ", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             questionsAndAnswers = JsonConvert.DeserializeObject<List<QuestionsStorage>>(DataFile.ReadAll("QuestionsAndAnswers.json"));
             if (questionsAndAnswers == null)
             {
                 questionsAndAnswers = new List<QuestionsStorage>();
-                DialogResult verificationResult = MessageBox.Show("Список вопросов пуст, хотите добавить вопрос?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+                DialogResult verificationResult = MessageBox.Show("РЎРїРёСЃРѕРє РІРѕРїСЂРѕСЃРѕРІ РїСѓСЃС‚, С…РѕС‚РёС‚Рµ РґРѕР±Р°РІРёС‚СЊ РІРѕРїСЂРѕСЃ?", "Р’РЅРёРјР°РЅРёРµ!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
                 if (verificationResult == DialogResult.Yes)
                 {
                     var questionManager = new QuestionsManagerForm();
@@ -33,7 +32,7 @@ namespace GeniyIdiotWinFormsApp
                 }
                 else
                 {
-                    MessageBox.Show("Приложение будет закрыто!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    MessageBox.Show("РџСЂРёР»РѕР¶РµРЅРёРµ Р±СѓРґРµС‚ Р·Р°РєСЂС‹С‚Рѕ!", "Р’РЅРёРјР°РЅРёРµ!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                     Application.Exit();
                 }
             }
@@ -42,7 +41,7 @@ namespace GeniyIdiotWinFormsApp
                 mainFormTimer.Start();
                 randoms = Helper.Shuffle(questionsAndAnswers.Count);
                 user.ResetCountRightAnswers();
-                questionNumberLabel.Text = $"Вопрос №{currentQuestionIndex + 1}";
+                questionNumberLabel.Text = $"Р’РѕРїСЂРѕСЃ в„–{currentQuestionIndex + 1}";
                 ShowQuestion(currentQuestionIndex);
                 userAnswerTextBox.Select();
             }
@@ -56,7 +55,7 @@ namespace GeniyIdiotWinFormsApp
             var userAnswer = Check.InputNumber(userAnswerTextBox.Text);
             if (userAnswer == double.MaxValue)
             {
-                ErrorMessageManager.Show("Введите число!");
+                ErrorMessageManager.Show("Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ!");
                 userAnswerTextBox.Text = "";
                 userAnswerTextBox.Select();
             }
@@ -72,20 +71,20 @@ namespace GeniyIdiotWinFormsApp
                 if (currentQuestionIndex < randoms.Length)
                 {
                     ShowQuestion(currentQuestionIndex);
-                    questionNumberLabel.Text = $"Вопрос №{currentQuestionIndex + 1}";
+                    questionNumberLabel.Text = $"Р’РѕРїСЂРѕСЃ в„–{currentQuestionIndex + 1}";
                     time = 10;
                     mainFormTimerLabel.ForeColor = Color.Black;
                 }
                 else
                 {
                     user.Diagnostic();
-                    var message = $"Количество правильных ответов: {user.CountRightAnswers}\n\n{user.Name}!\n\nВаш диагноз: {user.Diagnose}";
+                    var message = $"РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂР°РІРёР»СЊРЅС‹С… РѕС‚РІРµС‚РѕРІ: {user.CountRightAnswers}\n\n{user.Name}!\n\nР’Р°С€ РґРёР°РіРЅРѕР·: {user.Diagnose}";
                     Statistic.Save(user);
                     var resultForm = new ResultForm();
                     resultForm.resultTextLabel.Text = message;
                     resultForm.ShowDialog();
-                    questionNumberLabel.Text = "Конец";
-                    questionTextLabel.Text = "Вы прошли тестирование Гений-Идиот";
+                    questionNumberLabel.Text = "РљРѕРЅРµС†";
+                    questionTextLabel.Text = "Р’С‹ РїСЂРѕС€Р»Рё С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ Р“РµРЅРёР№-РРґРёРѕС‚";
                     mainFormTimer.Stop();
                     userAnswerTextBox.Visible = false;
                     sendAnswerButton.Visible = false;
@@ -141,19 +140,19 @@ namespace GeniyIdiotWinFormsApp
                 mainFormTimerLabel.ForeColor = Color.Black;
                 if (currentQuestionIndex < randoms.Length)
                 {
-                    questionNumberLabel.Text = $"Вопрос №{currentQuestionIndex + 1}";
+                    questionNumberLabel.Text = $"Р’РѕРїСЂРѕСЃ в„–{currentQuestionIndex + 1}";
                     ShowQuestion(currentQuestionIndex);
                 }
                 else
                 {
                     user.Diagnostic();
-                    var message = $"Количество правильных ответов: {user.CountRightAnswers}\n\n{user.Name}!\n\nВаш диагноз: {user.Diagnose}";
+                    var message = $"РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂР°РІРёР»СЊРЅС‹С… РѕС‚РІРµС‚РѕРІ: {user.CountRightAnswers}\n\n{user.Name}!\n\nР’Р°С€ РґРёР°РіРЅРѕР·: {user.Diagnose}";
                     Statistic.Save(user);
                     var resultForm = new ResultForm();
                     resultForm.resultTextLabel.Text = message;
                     resultForm.ShowDialog();
-                    questionNumberLabel.Text = "Конец";
-                    questionTextLabel.Text = "Вы прошли тестирование Гений-Идиот";
+                    questionNumberLabel.Text = "РљРѕРЅРµС†";
+                    questionTextLabel.Text = "Р’С‹ РїСЂРѕС€Р»Рё С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ Р“РµРЅРёР№-РРґРёРѕС‚";
                     mainFormTimer.Stop();
                     userAnswerTextBox.Visible = false;
                     sendAnswerButton.Visible = false;
